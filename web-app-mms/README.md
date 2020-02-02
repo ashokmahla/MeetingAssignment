@@ -15,5 +15,5 @@ Now run the WebApi
 ### UserName: Ashok
 ### Password: ashok@123
 
-Once looged in you are able to create and the meetings.
+Once looged in you are able to create and update meetings.
 
