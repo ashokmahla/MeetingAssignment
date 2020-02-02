@@ -1,0 +1,54 @@
+<mat-card>
+  <app-logout></app-logout>
+  <mat-card-title>Metting </mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="meetingForm" (ngSubmit)="submit()">
+      <p>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Subject" formControlName="subject">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <mat-label>Attendees</mat-label>
+          <mat-select multiple formControlName="attendee"  (selectionChange)="changed()">
+            <mat-option [disabled]="isDisabled" *ngFor="let att of attendees" [value]="att.id">
+              {{att.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="example-full-width">
+          <textarea matInput placeholder="Agend" formControlName="agends"></textarea>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <mat-placeholder>Start DateTime</mat-placeholder>
+          <mat-datetimepicker-toggle [for]="datetimePicker" matSuffix></mat-datetimepicker-toggle>
+          <mat-datetimepicker #datetimePicker type="datetime" openOnFocus="true" timeInterval="5"></mat-datetimepicker>
+          <input matInput formControlName="meetingdate" [min]="tomorrowDate" [value]="savedDateTime"
+            [matDatetimepicker]="datetimePicker" autocomplete="false">
+        </mat-form-field>
+      </p>
+
+      <p *ngIf="errorMessage" class="error">
+            {{ errorMessage }}
+          </p>
+
+      <div class="button">
+        <button type="button" (click)="goBack()" mat-button>Back To List</button>
+      </div>
+
+      <div class="button">
+        <button type="button" (click)="clearForm()" mat-button>Clear Form</button>
+      </div>
+
+      <div class="button">
+        <button type="submit" mat-button>Save</button>
+      </div>
+
+    </form>
+  </mat-card-content>
+</mat-card>
