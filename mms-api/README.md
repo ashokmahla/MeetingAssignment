@@ -1,5 +1,11 @@
-# aspnet-core-3-registration-login-api
+# Meeting-Web-Api
 
-ASP.NET Core 3.1 - Simple API for User Management, Authentication and Registration
+Simple API for User Management, Authentication and Registration
+Saving details of the Meetings and List of Attendies
 
-For documentation and instructions check out https://jasonwatmore.com/post/2019/10/14/aspnet-core-3-simple-api-for-authentication-registration-and-user-management
+ # Setting up the Api
+ 
+Contains the migrations which will automatially creates the User, Meeting and Attendies list
+Login: User Name: Ashok
+Password: ashok@123
+
