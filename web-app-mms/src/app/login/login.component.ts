@@ -33,10 +33,10 @@ export class LoginComponent {
           this.router.navigate(['meetings']);
         },
         error => {
-            console.log(error)
+          this.error = error;
         });
   
-      this.error = 'Username or password is invalid.';
+     
   }
  
 }
