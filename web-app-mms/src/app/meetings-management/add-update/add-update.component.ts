@@ -94,11 +94,12 @@ export class AddUpdateComponent implements OnInit {
     this.meetingObject.attendeesId =  this.meetingForm.value.attendee.join(',');
     this.meetingObject.agenda =  this.meetingForm.value.agends;
     this.meetingObject.meetingTime =  this.meetingForm.value.meetingdate;
-    if(this.currentId == 0){
+    if(this.currentId == 0) {
        //This for creating the meetings
       this.meetingService.add(this.meetingObject)
       .subscribe(
         data => {
+          this.router.navigate(['meetings']);
         },
         error => {
             console.log(error);
@@ -109,13 +110,14 @@ export class AddUpdateComponent implements OnInit {
       this.meetingService.update(this.meetingObject)
       .subscribe(
         data => {
+          this.router.navigate(['meetings']);
         },
         error => {
           console.log(error);
           this.errorMessage = error;
         });
     }
-    this.router.navigate(['meetings']);
+  
   }
 
   //Navigate to the meeting list
