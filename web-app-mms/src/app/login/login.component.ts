@@ -36,7 +36,7 @@ export class LoginComponent {
             console.log(error)
         });
   
-   // this.error = 'Username or password is invalid.';
+      this.error = 'Username or password is invalid.';
   }
  
 }

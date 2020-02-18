@@ -7,9 +7,11 @@ import { MeetingsManagementRoutingModule } from './meetings-management-routing.m
 import { MaterialModule } from '../material.module';
 import { LogoutComponent } from '../logout/logout.component';
 import { MatDatetimepickerModule,MatNativeDatetimeModule } from '@mat-datetimepicker/core';
+import { DatePipe } from '@angular/common';
+import { AttendiesDetailsComponent } from './attendies-details/attendies-details.component';
 
 @NgModule({
-  declarations: [AddUpdateComponent, ListComponent, LogoutComponent],
+  declarations: [AddUpdateComponent, ListComponent, LogoutComponent,AttendiesDetailsComponent],
   imports: [
     CommonModule,
     MaterialModule,
@@ -18,6 +20,7 @@ import { MatDatetimepickerModule,MatNativeDatetimeModule } from '@mat-datetimepi
     MatDatetimepickerModule,
     MatNativeDatetimeModule
   ],
+  providers: [DatePipe],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
 })
 export class MeetingsManagementModule { }

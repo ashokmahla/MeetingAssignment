@@ -17,12 +17,18 @@
     </ng-container>
     <ng-container matColumnDef="Date">
       <th mat-header-cell *matHeaderCellDef> Date Time </th>
-      <td mat-cell *matCellDef="let element"> {{element.meetingTime}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.meetingTime.toString() | date:'fullDate'}} </td>
     </ng-container>
-    <ng-container matColumnDef="Action">
+    <ng-container matColumnDef="Details">
       <th mat-header-cell *matHeaderCellDef> Action </th>
       <td mat-cell *matCellDef="let element">
         <button style="background-color: burlywood;" (click)="update(element.id)" type="button">Details</button>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="Delete">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let element">
+        <button style="background-color: red;" (click)="delete(element.id)" type="button">Delete</button>
       </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -33,5 +39,10 @@
   <ng-container matColumnDef="action">
     <button style="background-color: burlywood;float: right; margin-right: 2px;" (click)="addMeeting()"
       type="button">Add Meeting</button>
+  </ng-container>
+
+  <ng-container matColumnDef="action">
+    <button style="background-color: burlywood;float: right; margin-right: 2px;" (click)="attendeesDetails()"
+      type="button">Attendees Details</button>
   </ng-container>
 </div>

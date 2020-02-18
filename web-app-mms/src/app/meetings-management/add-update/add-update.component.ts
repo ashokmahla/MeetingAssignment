@@ -9,7 +9,7 @@ import { Meeting } from 'src/app/Models/meeting.model';
 @Component({
   selector: 'app-add-update',
   templateUrl: './add-update.component.html',
-  styleUrls: ['./add-update.component.sass']
+  styleUrls: ['./add-update.component.sass'],
 })
 export class AddUpdateComponent implements OnInit {
 

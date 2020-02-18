@@ -14,38 +14,26 @@ namespace WebApi.Controllers
     [Authorize]
     [ApiController]
     [Route("[controller]")]
-    public class AttendeesController : ControllerBase
+    public class AttendeesMapController : ControllerBase
     {
         private IAttendeesService _attendeesService;
-        private IMeetingService _meetingService;
         private IMapper _mapper;
 
-        public AttendeesController(
+        public AttendeesMapController(
          IAttendeesService attendeesService, IMeetingService meetingService,
          IMapper mapper)
         {
             _attendeesService = attendeesService;
-            _meetingService = meetingService;
              _mapper = mapper;
         }
 
-
         [HttpGet]
         public IActionResult GetAll()
-        {
-            var attendees = _attendeesService.GetAll();
-            var model = _mapper.Map<IList<Attendees>>(attendees);
-            return Ok(model);
-        }
-
-        [HttpGet]
-        [Route("mappedattendies")]
-        public IActionResult GetMappedAttendies()
         {
             var mappedList = _attendeesService.GetMappedAttendies();
             var model = _mapper.Map<IList<MappedAttendees>>(mappedList);
             return Ok(model);
         }
- 
+
     }
 }

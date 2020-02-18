@@ -11,9 +11,11 @@ namespace WebApi.Services
     {
         IEnumerable<Meetings> GetAll();
         Meetings GetById(int id);
-        void Update(Meetings meeting);
+        int Update(Meetings meeting);
 
-        void Add(Meetings meeting);
+        int Add(Meetings meeting);
+
+        int Delete(int id);
     }
 
     public class MeetingService : IMeetingService
@@ -34,7 +36,7 @@ namespace WebApi.Services
             return _context.Meetings.Find(id);
         }
 
-        public void Update(Meetings meeting)
+        public int Update(Meetings meeting)
         {
             var databaseMeeting = _context.Meetings.Find(meeting.Id);
 
@@ -56,11 +58,11 @@ namespace WebApi.Services
                 databaseMeeting.MeetingTime = meeting.MeetingTime;
 
             _context.Meetings.Update(databaseMeeting);
-            _context.SaveChanges();
+             return  _context.SaveChanges();
         }
 
 
-        public void Add(Meetings meeting)
+        public int Add(Meetings meeting)
         {
             if (meeting == null)
                 throw new AppException("Meeting not found");
@@ -80,7 +82,17 @@ namespace WebApi.Services
                 throw new AppException("Please fill meeting date time");
 
             _context.Meetings.Update(meeting);
-            _context.SaveChanges();
+           return _context.SaveChanges();
+        }
+
+        public int Delete(int id)
+        {
+            var databaseMeeting = _context.Meetings.Find(id);
+            if (databaseMeeting == null)
+                throw new AppException("Meeting not found");
+
+            _context.Remove(databaseMeeting);
+            return _context.SaveChanges();
         }
     }
 }

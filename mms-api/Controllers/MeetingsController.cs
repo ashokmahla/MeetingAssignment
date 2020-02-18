@@ -43,26 +43,33 @@ namespace WebApi.Controllers
             return Ok(model);
         }
 
+        [HttpDelete("{id}")]
+        public IActionResult DeleteById(int id)
+        {
+            var status = _meetingService.Delete(id);
+            return Ok(status);
+        }
+
         [HttpPost()]
         public IActionResult Update([FromBody]Meetings model)
         {
             // map model to entity and set id
             var meetings = _mapper.Map<Meetings>(model);
-            
+            int status = 0;
             try
             {
                 if(model.Id == 0)
                 {
                     // update user 
-                    _meetingService.Add(meetings);
+                    status = _meetingService.Add(meetings);
                 }
                 else
                 {
                     // update user 
-                    _meetingService.Update(meetings);
+                    status = _meetingService.Update(meetings);
                 }
                
-                return Ok();
+                return Ok(status);
             }
             catch (Exception ex)
             {

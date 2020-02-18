@@ -14,6 +14,7 @@ namespace WebApi.Helpers
             CreateMap<UpdateModel, User>();
             CreateMap<Attendees, Attendees>();
             CreateMap<Meetings, Meetings>();
+            CreateMap<MappedAttendees, MappedAttendees>();
         }
     }
 }

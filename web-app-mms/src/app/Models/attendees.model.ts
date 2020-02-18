@@ -8,3 +8,16 @@ export class Attendees {
         this.name = attendees && attendees.name || '';
     }
  }
+
+
+ export class MappedAttendees{
+    count:number;
+    name: string;
+    constructor();
+    constructor(attendees: MappedAttendees);
+    constructor(attendees?: any) {
+        this.count = attendees && attendees.count || 0;
+        this.name = attendees && attendees.name || '';
+    }
+
+ }
