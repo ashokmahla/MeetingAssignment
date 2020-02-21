@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
 using WebApi.Entities;
 using WebApi.Models.Meetings;
 
@@ -22,10 +23,7 @@ namespace WebApi.Helpers
 
         public DbSet<User> Users { get; set; }
 
-
-
         public DbSet<Meetings> Meetings { get; set; }
 
-        public DbSet<Attendees> Attendees { get; set; }
     }
 }

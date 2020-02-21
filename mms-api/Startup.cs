@@ -13,6 +13,8 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System;
 using Microsoft.IdentityModel.Logging;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace WebApi
 {
@@ -31,6 +33,9 @@ namespace WebApi
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddMvc().AddNewtonsoftJson(options => { options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore; });
+
+          
             IdentityModelEventSource.ShowPII = true;
             // use sql server db
             services.AddDbContext<DataContext>();
@@ -83,7 +88,6 @@ namespace WebApi
             // configure DI for application services
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IMeetingService, MeetingService>();
-            services.AddScoped<IAttendeesService, AttendeesService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

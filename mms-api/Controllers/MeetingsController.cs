@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+ 
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using WebApi.Models.Meetings;
 using WebApi.Services;
 
@@ -18,10 +20,12 @@ namespace WebApi.Controllers
     public class MeetingsController : ControllerBase
     {
         private IMeetingService _meetingService;
+        
         private IMapper _mapper;
         
         public MeetingsController(
          IMeetingService meetingService,
+         
          IMapper mapper)
         {
             _meetingService = meetingService;
@@ -31,16 +35,15 @@ namespace WebApi.Controllers
         public IActionResult GetAll()
         {
             var meetings = _meetingService.GetAll();
-            var model = _mapper.Map<IList<Meetings>>(meetings);
-            return Ok(model);
+            return Ok(meetings);
         }
+        
 
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
             var meeting = _meetingService.GetById(id);
-            var model = _mapper.Map<Meetings>(meeting);
-            return Ok(model);
+            return Ok(meeting);
         }
 
         [HttpDelete("{id}")]
