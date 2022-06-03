@@ -17,7 +17,7 @@
     "@angular/compiler": "~8.2.14",
     "@mat-datetimepicker/core": "3.0.0-beta.0",
     "@mat-datetimepicker/moment": "3.0.0-beta.0",
-    "@angular/core": "~8.2.14",
+    "@angular/core": "~11.0.5",
     "@angular/forms": "~8.2.14",
     "@angular/material": "^8.2.3",
     "@angular/platform-browser": "~8.2.14",
